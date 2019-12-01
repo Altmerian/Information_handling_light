@@ -1,24 +1,21 @@
 package by.epam.pavelshakhlovich.informationhandling.entity;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-public class CompositeTextComponent implements TextComponent {
+public class CompositeTextComponent extends TextComponent {
+
     private final List<TextComponent> children = new ArrayList<>();
-    private final String string;
 
-    public CompositeTextComponent(String string) {
-        this.string = string;
+    public CompositeTextComponent(TextPartType type, String storedString) {
+        super(type, storedString);
     }
 
-    public String getString() {
-        return string;
-    }
 
     @Override
     public TextComponent addChild(TextComponent textComponent) {
-        return null;
+        children.add(textComponent);
+        return textComponent;
     }
 
     @Override
@@ -27,8 +24,8 @@ public class CompositeTextComponent implements TextComponent {
     }
 
     @Override
-    public TextComponent getChild(int childIndex) {
-        return null;
+    public List<TextComponent> getChildren() {
+        return children;
     }
 
     @Override
@@ -38,11 +35,18 @@ public class CompositeTextComponent implements TextComponent {
 
     @Override
     public int countChildren() {
-        return 0;
+        return children.size();
     }
 
     @Override
-    public String[] operation(String string) {
-        return new String[0];
+    public void outputChildren() {
+        StringBuilder text = new StringBuilder("\t");
+        for (TextComponent textComponent : children) {
+            String delimiter = textComponent.getType() == TextPartType.PARAGRAPH ? "\n\t" : " ";
+            text.append(textComponent).append(delimiter);
+        }
     }
+
 }
+
+

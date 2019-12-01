@@ -1,10 +1,11 @@
 package by.epam.pavelshakhlovich.informationhandling.entity;
 
-public class LeafTextComponent implements TextComponent {
-    private final String string;
+import java.util.List;
 
-    public LeafTextComponent(String string) {
-        this.string = string;
+public class LeafTextComponent extends TextComponent {
+
+    public LeafTextComponent(String storedString) {
+        super(TextPartType.CHARACTER, storedString);
     }
 
     @Override
@@ -18,7 +19,7 @@ public class LeafTextComponent implements TextComponent {
     }
 
     @Override
-    public TextComponent getChild(int childIndex) {
+    public List<TextComponent> getChildren() {
         throw new UnsupportedOperationException();
     }
 
@@ -33,7 +34,8 @@ public class LeafTextComponent implements TextComponent {
     }
 
     @Override
-    public String[] operation(String string) {
-        return new String[0];
+    public void outputChildren() {
+
     }
+
 }
