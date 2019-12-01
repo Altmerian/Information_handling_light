@@ -1,14 +1,19 @@
 package by.epam.pavelshakhlovich.informationhandling.entity;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class CompositeTextComponent implements TextComponent {
-    private final List<TextComponent> children = new LinkedList<>();
+    private final List<TextComponent> children = new ArrayList<>();
     private final String string;
 
     public CompositeTextComponent(String string) {
         this.string = string;
+    }
+
+    public String getString() {
+        return string;
     }
 
     @Override
