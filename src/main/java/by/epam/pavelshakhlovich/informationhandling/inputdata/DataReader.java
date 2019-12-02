@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class DataReader {
-    private static Logger logger = Logger.getRootLogger() ;
+    private static Logger logger = Logger.getRootLogger();
 
     public String readTextFromFile(Path path) {
         String text = "";

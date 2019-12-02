@@ -33,9 +33,4 @@ public class LeafTextComponent extends TextComponent {
         throw new UnsupportedOperationException();
     }
 
-    @Override
-    public void outputChildren() {
-
-    }
-
 }

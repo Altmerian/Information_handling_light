@@ -17,9 +17,12 @@ public class Application {
         CompositeTextComponent text = new CompositeTextComponent(TextPartType.TEXT, reader.readTextFromFile(path));
         PrimaryParser primaryParser = new PrimaryParser();
         TextComponent parsedText = primaryParser.handleText(text);
-        TextAction textAction = new TextAction(parsedText);
-        textAction.sortBySentenceCount();
-        textAction.sortByWordsLength();
+
+        TextAction.sortParagraphsBySentenceCount(parsedText);
+        TextAction.outputTextComponent(parsedText);
+
+        TextAction.sortSentencesByWordsLength(parsedText);
+        TextAction.sortSentencesByWordsCount(parsedText);
 
     }
 }

@@ -1,8 +1,12 @@
 package by.epam.pavelshakhlovich.informationhandling.parser;
 
 import by.epam.pavelshakhlovich.informationhandling.entity.CompositeTextComponent;
+import by.epam.pavelshakhlovich.informationhandling.entity.LeafTextComponent;
 import by.epam.pavelshakhlovich.informationhandling.entity.TextComponent;
 import by.epam.pavelshakhlovich.informationhandling.entity.TextPartType;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class WordParser implements TextParser {
     private final TextParser nextParser;
@@ -16,8 +20,13 @@ public class WordParser implements TextParser {
         String lexeme = textComponent.getStoredString();
         String[] words = parseText(lexeme);
         for (String word : words) {
-            TextComponent wordComponent = new CompositeTextComponent(TextPartType.WORD, word);
-            textComponent.addChild(nextParser.handleText(wordComponent));
+            if (word.length() == 1) {
+                TextComponent charComponent = new LeafTextComponent(word);
+                textComponent.addChild(charComponent);
+            } else {
+                TextComponent wordComponent = new CompositeTextComponent(TextPartType.WORD, word);
+                textComponent.addChild(nextParser.handleText(wordComponent));
+            }
         }
         return textComponent;
     }
@@ -26,6 +35,10 @@ public class WordParser implements TextParser {
     public String[] parseText(String string) {
         string = string.trim();
         String regEx = "\\s+|(?<=[\\p{Punct}])|(?=\\p{Punct})";
-        return string.split(regEx);
+        String[] result = string.split(regEx);
+        return Arrays.stream(result)
+                .filter(x -> !x.isEmpty())
+                .collect(Collectors.toList())
+                .toArray(String[]::new);
     }
 }

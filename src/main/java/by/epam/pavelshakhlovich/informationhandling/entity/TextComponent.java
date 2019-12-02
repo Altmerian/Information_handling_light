@@ -20,9 +20,12 @@ public abstract class TextComponent {
     }
 
     public abstract TextComponent addChild(TextComponent textComponent);
+
     public abstract boolean removeChild(TextComponent textComponent);
+
     public abstract List<TextComponent> getChildren();
+
     public abstract boolean isLeafComponent();
+
     public abstract int countChildren();
-    public abstract void outputChildren();
 }

@@ -11,7 +11,6 @@ public class CompositeTextComponent extends TextComponent {
         super(type, storedString);
     }
 
-
     @Override
     public TextComponent addChild(TextComponent textComponent) {
         children.add(textComponent);
@@ -36,15 +35,6 @@ public class CompositeTextComponent extends TextComponent {
     @Override
     public int countChildren() {
         return children.size();
-    }
-
-    @Override
-    public void outputChildren() {
-        StringBuilder text = new StringBuilder("\t");
-        for (TextComponent textComponent : children) {
-            String delimiter = textComponent.getType() == TextPartType.PARAGRAPH ? "\n\t" : " ";
-            text.append(textComponent).append(delimiter);
-        }
     }
 
 }
