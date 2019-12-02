@@ -25,7 +25,7 @@ public class WordParser implements TextParser {
     @Override
     public String[] parseText(String string) {
         string = string.trim();
-        String regEx = "\\W+";
+        String regEx = "\\s+|(?<=[\\p{Punct}])|(?=\\p{Punct})";
         return string.split(regEx);
     }
 }
