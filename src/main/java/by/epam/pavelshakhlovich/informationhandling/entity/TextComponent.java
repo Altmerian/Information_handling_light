@@ -3,7 +3,7 @@ package by.epam.pavelshakhlovich.informationhandling.entity;
 import java.util.List;
 
 public abstract class TextComponent {
-    private final String storedString;
+    private String storedString;
     private final TextPartType type;
 
     public TextComponent(TextPartType type, String storedString) {
@@ -17,6 +17,10 @@ public abstract class TextComponent {
 
     public String getStoredString() {
         return storedString;
+    }
+
+    public void setStoredString(String storedString) {
+        this.storedString = storedString;
     }
 
     public abstract TextComponent addChild(TextComponent textComponent);

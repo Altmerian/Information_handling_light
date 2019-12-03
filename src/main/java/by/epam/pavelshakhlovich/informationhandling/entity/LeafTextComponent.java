@@ -30,7 +30,7 @@ public class LeafTextComponent extends TextComponent {
 
     @Override
     public int countChildren() {
-        throw new UnsupportedOperationException();
+        return 0;
     }
 
 }

@@ -10,7 +10,7 @@ public class DataReaderTest {
 
     @Test
     public void testReadTextFromFile() {
-        Path path = Paths.get("data/TestTextData.txt");
+        Path path = Paths.get("src/test/test_data/testData1.txt");
         String expected = "    It has survived not only five centuries, but also the leap into electronic\r\n" +
                 "typesetting, remaining essentially unchanged. It was popularised in the with the\r\n" +
                 "release of Letraset sheets containing Lorem Ipsum passages, and more recently with\r\n" +
