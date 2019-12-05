@@ -1,6 +1,7 @@
 package by.epam.pavelshakhlovich.informationhandling.entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CompositeTextComponent extends TextComponent {
@@ -12,9 +13,9 @@ public class CompositeTextComponent extends TextComponent {
     }
 
     @Override
-    public TextComponent addChild(TextComponent textComponent) {
-        children.add(textComponent);
-        return textComponent;
+    public TextComponent[] addChild(TextComponent...textComponents) {
+        Arrays.stream(textComponents).forEach(children::add);
+        return textComponents;
     }
 
     @Override
@@ -37,6 +38,23 @@ public class CompositeTextComponent extends TextComponent {
         return children.size();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof CompositeTextComponent)) return false;
+        if (!super.equals(obj)) return false;
+
+        CompositeTextComponent that = (CompositeTextComponent) obj;
+
+        return children.equals(that.children);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + children.hashCode();
+        return result;
+    }
 }
 
 

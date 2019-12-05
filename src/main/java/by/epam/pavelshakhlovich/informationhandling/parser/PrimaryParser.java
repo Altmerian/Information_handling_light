@@ -6,6 +6,7 @@ import by.epam.pavelshakhlovich.informationhandling.entity.TextPartType;
 
 public class PrimaryParser implements TextParser {
     private final TextParser nextParser;
+    private static final String REGEX = "(?<=[\r\n])(\\s{3,}|\\t)";
 
     public PrimaryParser() {
         this.nextParser = new SentenceParser();
@@ -26,8 +27,7 @@ public class PrimaryParser implements TextParser {
     @Override
     public String[] parseText(String string) {
         string = string.trim();
-        String regEx = "(?<=[\r\n])(\\s{3,}|\\t)";
-        return string.split(regEx);
+        return string.split(REGEX);
     }
 
 }

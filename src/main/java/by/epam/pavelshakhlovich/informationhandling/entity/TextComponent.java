@@ -23,7 +23,7 @@ public abstract class TextComponent {
         this.storedString = storedString;
     }
 
-    public abstract TextComponent addChild(TextComponent textComponent);
+    public abstract TextComponent[] addChild(TextComponent... textComponents);
 
     public abstract boolean removeChild(TextComponent textComponent);
 
@@ -32,4 +32,22 @@ public abstract class TextComponent {
     public abstract boolean isLeafComponent();
 
     public abstract int countChildren();
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof TextComponent)) return false;
+
+        TextComponent that = (TextComponent) obj;
+
+        if (!storedString.equals(that.storedString)) return false;
+        return type == that.type;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = storedString.hashCode();
+        result = 31 * result + type.hashCode();
+        return result;
+    }
 }

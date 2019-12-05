@@ -9,7 +9,7 @@ public class LeafTextComponent extends TextComponent {
     }
 
     @Override
-    public TextComponent addChild(TextComponent textComponent) {
+    public TextComponent[] addChild(TextComponent... textComponents) {
         return null;
     }
 
