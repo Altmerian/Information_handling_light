@@ -14,7 +14,7 @@ public class CompositeTextComponent extends TextComponent {
 
     @Override
     public TextComponent[] addChild(TextComponent...textComponents) {
-        Arrays.stream(textComponents).forEach(children::add);
+        children.addAll(Arrays.asList(textComponents));
         return textComponents;
     }
 

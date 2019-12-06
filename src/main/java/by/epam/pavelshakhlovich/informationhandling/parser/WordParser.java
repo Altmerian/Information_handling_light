@@ -34,11 +34,10 @@ public class WordParser implements TextParser {
     @Override
     public String[] parseText(String string) {
         string = string.trim();
-        String regEx = "\\s+|(?<=[\\p{Punct}])|(?=\\p{Punct})";
-        String[] result = string.split(regEx);
+        String[] result = string.split("\\s+|(?<=[\\p{Punct}])|(?=\\p{Punct})");
         return Arrays.stream(result)
-                .filter(x -> !x.isEmpty())
-                .collect(Collectors.toList())
-                .toArray(String[]::new);
+            .filter(x -> !x.isEmpty())
+            .collect(Collectors.toList())
+            .toArray(String[]::new);
     }
 }

@@ -25,7 +25,6 @@ public class SentenceParser implements TextParser {
     @Override
     public String[] parseText(String string) {
         string = string.trim();
-        String regEx = "(?<=(\\w{2,}[.!?]))\\s*";
-        return string.split(regEx);
+        return string.split("(?<=(\\w{2,}[.!?]))\\s*");
     }
 }

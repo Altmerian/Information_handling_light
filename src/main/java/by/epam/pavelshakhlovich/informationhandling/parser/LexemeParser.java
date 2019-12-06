@@ -26,7 +26,6 @@ public class LexemeParser implements TextParser {
     @Override
     public String[] parseText(String string) {
         string = string.trim();
-        String regEx = "\\s+";
-        return string.split(regEx);
+        return string.split("\\s+");
     }
 }
